@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Pet</title>
+    <link href="../static/mystyle.css" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        {% if user_authenticated == "" %}
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        {% elif user_authenticated == "admin" %}
+            <a href="/">Home</a>
+            <a class="active" href="/add_pet">Add Pet</a>
+            <a href="/delete_pet/0">Delete Pet</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a class="active" href="/">Home</a>
+            <a href="/logout">Logout</a>
+        {% endif %}
+    </div>
+<form method="post">
+    <h1>New Pet</h1>
+    <label>Animal:</label>
+    <select name="animal" required>
+        <option>Dog</option>
+        <option>Cat</option>
+        <option>Bird</option>
+    </select>
+    <br>
+    <label>Name:</label>
+    <input type="text" name="name" placeholder="name" required>
+    <br>
+    <label>Age:</label>
+    <input type="number" name="age" placeholder="age" required min="0" max="100">
+    <br>
+    <label>Photo:</label>
+    <input type="url" name="photo" placeholder="photo" required>
+    <br>
+    <label>Description:</label>
+    <input type="text" name="description" placeholder="short description" required>
+    <br>
+    <div class="buttons">
+    <button type="submit" class="good">Add Pet</button>
+    <button type="reset" class="bad">Reset</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PetForYou</title>
+    <link href="{{ url_for('static', filename='mystyle.css')}}" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        {% if user_authenticated == "" %}
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        {% elif user_authenticated == "admin" %}
+            <a class="active" href="/">Home</a>
+            <a href="/add_pet">Add Pet</a>
+            <a href="/delete_pet/0">Delete Pet</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a class="active" href="/">Home</a>
+            <a href="/logout">Logout</a>
+        {% endif %}
+    </div>
+    <div class="pet-filter">
+        <!-- Add a form for the pet filter -->
+        <form action="/filter_pets" method="post" class="pet-filter-form">
+            <label for="petKind">Filter by Pet Kind:</label>
+            <select name="petKind" id="petKind">
+                <option value="all">All Pets</option>
+                <option value="Dog">Dogs</option>
+                <option value="Cat">Cats</option>
+                <option value="Bird">Birds</option>
+            </select>
+            <input type="submit" value="Apply Filter">
+        </form>
+    </div>
+    <div class="image-container">
+    {% for pet in pets %}
+        <a href="/show_animal/{{ pet.id }}">
+            <img src="{{ pet.photo }}">
+        </a>
+    {% endfor %}
+</div>
+</body>
+</html>

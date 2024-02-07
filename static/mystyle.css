@@ -1,0 +1,194 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ADD8E6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar Styles */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: #ADD8E6;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: white;
+    color: black;
+}
+
+/* Image Container Styles */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.image-container a {
+    width: calc(25% - 10px);
+    margin-bottom: 10px;
+    text-decoration: none;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    width: 100%;
+    height: 310px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Pet Container Styles */
+.pet-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+}
+
+.pet-filter{
+    text-align : center;
+    margin-top: -90px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.pet-image {
+    width: 50%;
+    height: 350px;
+    border-bottom: 2px solid #ddd;
+}
+
+.pet-details {
+    padding: 20px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+/* Heading Styles */
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+h2, h3 {
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Image Styles */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    margin-top: 100px;
+    background-color: #ADD8E6;
+    width: 50%;
+    margin-left: 24%;
+    padding: 1%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.good, .bad {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bad {
+    background-color: red;
+    margin: 0;
+}
+
+.buttons {
+    text-align: center;
+}
+
+/* Table Styles */
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Image Container Hover Styles */
+.image-container a:hover img {
+    border: 2px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    filter: brightness(90%);
+    font-weight: bold;
+}
+
+/* Delete Icon Styles */
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+}
+
+.image-container a:hover .delete-icon {
+    display: block;
+}

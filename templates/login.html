@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="{{ url_for('static', filename='mystyle.css')}}" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        {% if user_authenticated == "" %}
+            <a href="/register">Register</a>
+            <a class="active" href="/login">Login</a>
+        {% elif user_authenticated == "admin" %}
+            <a href="/">Home</a>
+            <a href="/add_pet">Add Pet</a>
+            <a href="/delete_pet/0">Delete Pet</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a class="active" href="/">Home</a>
+            <a href="/logout">Logout</a>
+        {% endif %}
+    </div>
+  <form method="post">
+      <h1>Login</h1>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <div class="buttons">
+    <button type="submit" class="good">Login</button>
+    <button type="reset" class="bad">Reset</button>
+    </div>
+  </form>
+</body>
+</html>

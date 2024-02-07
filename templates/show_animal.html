@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{pet.name}} - Pet Details</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    var deleteButtons = document.querySelectorAll('.delete-opinion-btn');
+
+    deleteButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var opinionId = button.getAttribute('data-opinion-id');
+
+            // You can use a library like SweetAlert for a nicer confirmation
+            if (confirm('Are you sure you want to delete this opinion?')) {
+                window.location.href = '/delete_opinion/' + opinionId;
+            }
+        });
+    });
+});
+    </script>
+</head>
+<link href="{{ url_for('static', filename='mystyle.css')}}" rel="stylesheet">
+<body>
+    <div class="topnav">
+        {% if user_authenticated == "" %}
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        {% elif user_authenticated == "admin" %}
+            <a class="active" href="/">Home</a>
+            <a href="/add_pet">Add Pet</a>
+            <a href="/delete_pet/0">Delete Pet</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a class="active" href="/">Home</a>
+            <a href="/logout">Logout</a>
+        {% endif %}
+    </div>
+    <div class="pet-container">
+    <img class="pet-image" src="{{pet.photo}}" alt="{{pet.name}}">
+    <div class="pet-details">
+      <h1>{{pet.name}}</h1>
+      <h2>Age: {{pet.age}}</h2>
+      <h2>Animal: {{pet.animal}}</h2>
+      <h3>Description: {{pet.description}}</h3>
+    </div>
+    </div>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Opinion</th>
+            <th>Delete</th>
+        </tr>
+        {% for o in opinions %}
+        <tr>
+            <td>{{ o.username }}</td>
+            <td>{{ o.opinion }}</td>
+            <td>
+                {% if user_authenticated == o.username %}
+                    <a href="#" class="delete-opinion-btn" data-opinion-id="{{ o.id }}">Delete Opinion</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="post">
+        <h1>Opinion</h1>
+    <label for="opinion">Opinion:</label>
+    <input type="text" id="opinion" name="opinion" required>
+    <input type="text" id="petId" name="petId" value="{{pet.id}}" hidden>
+    <div class="buttons">
+    <button type="submit" class="good">Add opinion</button>
+    <button type="reset" class="bad">Reset</button>
+    </div>
+  </form>
+</body>
+</html>
